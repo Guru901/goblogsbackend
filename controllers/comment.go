@@ -9,23 +9,23 @@ import (
 	"github.com/gofiber/fiber/v3"
 )
 
-func RegisterUser(c fiber.Ctx) error {
+func Comment(c fiber.Ctx) error {
 	client := helpers.ConnectToDB()
 	defer client.Disconnect(context.TODO())
 
-	coll := client.Database("goblogs").Collection("users")
+	coll := client.Database("goblogs").Collection("comment")
 
-	user := new(models.Users)
+	comment := new(models.Comment)
 
-	err := c.Bind().JSON(user)
+	err := c.Bind().JSON(comment)
 
 	helpers.HandleError(err)
-	result, err := coll.InsertOne(context.TODO(), user)
+	result, err := coll.InsertOne(context.TODO(), comment)
 	helpers.HandleError(err)
 	fmt.Printf("Document inserted with ID: %s\n", result.InsertedID)
 
 	response := models.Repsonse{
-		Message: "User Registerd",
+		Message: "Comment Added",
 		Success: true,
 	}
 

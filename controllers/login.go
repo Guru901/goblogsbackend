@@ -7,9 +7,10 @@ import (
 	"nice/models"
 
 	"github.com/gofiber/fiber/v3"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
-func RegisterUser(c fiber.Ctx) error {
+func LoginUser(c fiber.Ctx) error {
 	client := helpers.ConnectToDB()
 	defer client.Disconnect(context.TODO())
 
@@ -18,11 +19,13 @@ func RegisterUser(c fiber.Ctx) error {
 	user := new(models.Users)
 
 	err := c.Bind().JSON(user)
+	filter := bson.D{{"username", user.Username}}
+	helpers.HandleError(err)
+	var result models.Users
+	err = coll.FindOne(context.TODO(), filter).Decode(&result)
+	helpers.HandleError(err)
 
-	helpers.HandleError(err)
-	result, err := coll.InsertOne(context.TODO(), user)
-	helpers.HandleError(err)
-	fmt.Printf("Document inserted with ID: %s\n", result.InsertedID)
+	fmt.Println(result)
 
 	response := models.Repsonse{
 		Message: "User Registerd",

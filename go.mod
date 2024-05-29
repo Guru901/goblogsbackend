@@ -5,6 +5,7 @@ go 1.22.2
 require github.com/gofiber/fiber/v3 v3.0.0-beta.2
 
 require (
+	github.com/a-h/templ v0.2.707 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.4 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
@@ -24,6 +25,6 @@ require (
 	go.mongodb.org/mongo-driver v1.15.0 // indirect
 	golang.org/x/crypto v0.19.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.17.0 // indirect
+	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 )
