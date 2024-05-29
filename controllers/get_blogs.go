@@ -35,10 +35,10 @@ func GetBlogs(c fiber.Ctx) error {
 		fmt.Printf("%s\n", output)
 	}
 
-	reponse := models.Repsonse{
-		Success: true,
-		Message: "got the blogs",
-	}
+	// reponse := models.Repsonse{
+	// 	Success: true,
+	// 	Message: "got the blogs",
+	// }
 
-	return c.Status(fiber.StatusOK).JSON(reponse)
+	return c.Status(fiber.StatusOK).JSON(results)
 }

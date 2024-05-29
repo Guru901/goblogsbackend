@@ -1,0 +1,9 @@
+package components
+
+import "nice/models"
+
+templ Blog(blogs []models.Blogs) {
+	for _, item := range blogs {
+		<li>{ item.Title }</li>
+	}
+}

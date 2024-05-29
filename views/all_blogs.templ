@@ -1,0 +1,9 @@
+package views
+
+import "nice/views/components"
+
+templ AllBlogs() {
+	@components.Header()
+	<button hx-get="/blog" hx-target="#blogs">GetAllBlogs</button>
+	<div id="blogs"></div>
+}

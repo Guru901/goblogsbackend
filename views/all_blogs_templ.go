@@ -12,7 +12,7 @@ import "bytes"
 
 import "nice/views/components"
 
-func Hello() templ.Component {
+func AllBlogs() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -29,7 +29,7 @@ func Hello() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form hx-post=\"/write\"><input type=\"text\" name=\"title\" placeholder=\"title\"> <input type=\"text\" name=\"Author\" placeholder=\"author\"> <textarea name=\"content\"></textarea> <input type=\"submit\" value=\"done!\"></form>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button hx-get=\"/blog\" hx-target=\"#blogs\">GetAllBlogs</button><div id=\"blogs\"></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
